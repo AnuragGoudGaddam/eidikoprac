@@ -1,0 +1,17 @@
+.readcolor {
+    color: red;
+}
+
+.blackcolor {
+    color: black;
+}
+
+.required:after {
+    content: "*";
+    color: red;
+    margin-left: 2px;
+}
+
+.downloadDoc {
+    cursor: pointer;
+}
