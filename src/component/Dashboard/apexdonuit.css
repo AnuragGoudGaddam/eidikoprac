@@ -1,0 +1,45 @@
+.CaseTypesChart {
+    width: 100%;
+    flex-grow: 0;
+  
+    /* margin: 42px 16px 20px 83px;
+      padding: 20px 70px 43px 20px; */
+    background-color: #fff;
+  }
+  .RiskScoreChart {
+    width: 100%;
+  
+    flex-grow: 0;
+  
+    /* margin: 42px 16px 20px 83px;
+      padding: 20px 70px 43px 20px; */
+    border-radius: 10px;
+    /* border: solid 1px #ebedf4; */
+    background-color: #fff;
+  }
+  
+  .Widgets {
+    height: 65px;
+    flex-grow: 0;
+    /* padding: 16px 14.2px 16px 17px; */
+    border-radius: 8px;
+    border: solid 1px #ebedf4;
+    background-color: #fff;
+  }
+  .SearchResult {
+    /* width: 388px;
+      height: 88px; */
+    /* display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch; */
+    /* gap: 16px; */
+    /* margin: 20px 13px 28px 16px;
+      padding: 8px 16px; */
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px #dde0e9;
+    background-color: #fff;
+  }
+  .apexcharts-datalabel-label{
+    fill:black  !important
+  }

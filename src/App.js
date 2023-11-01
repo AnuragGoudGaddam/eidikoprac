@@ -32,6 +32,10 @@ import { properties } from "./component/properties";
 import ReserveAttachmentFields from "./component/ReserveAttachmentFields";
 import Dashboard from "./component/Dashboard/Dashboard";
 import LinechartD from "./component/Dashboard/linechart";
+import Dash from "./component/Dashboard/dash";
+import { CasePriority } from "./component/Dashboard/apexchartsdonut";
+import { RiskLevel } from "./component/Dashboard/donutchartfrom";
+import { CaseTypes123 } from "./component/Dashboard/dounautchart2";
 
 function App() {
   const [isUser, setIsUser] = useState(true);
@@ -83,7 +87,14 @@ function App() {
       <Switch>
         <Route path='/' exact component={Login} />
         <Route path='/dashboard' exact component={Dashboard} />
-        <Route path='/Linechart' exact component={LinechartD} />
+        <Route path='/Dash' exact component={Dash} />
+        <Route path='/casetypes' exact component={CasePriority} />
+        <Route path='/risctypes' exact component={RiskLevel} />
+        <Route path='/citytypes2' exact component={CaseTypes123} />
+
+
+
+
         {isUser && (
           <>
             <Route path='/bulkEdit' exact component={BulkEdit} />

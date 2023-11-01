@@ -31,6 +31,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useState } from 'react';
 
 // 
 
@@ -103,12 +104,19 @@ const data = [
 ];
 
 function Dashboard() {
-
+    const [carbsData, setCarbsData] = useState(null);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => {
         console.log('Modal is closing'); // Add this line
         setOpen(false);
+    };
+
+    const handleCarbsClick = (carbs1) => {
+        const carbsdetails = rows.find((each) => each.carbs === carbs1)
+        console.log('Carbs clicked:', carbs1);
+        setCarbsData(carbsdetails);
+        handleOpen();
     };
 
 
@@ -121,7 +129,7 @@ function Dashboard() {
 
                         <Grid item xs={12} sm={6} md={4}  >
                             <Card>
-                                <div onClick={handleOpen} >
+                                <div onClick={() => handleCarbsClick(rows[3].carbs)} >
                                     <BarChart width={400}
                                         height={300}
                                         data={data}>
@@ -153,6 +161,8 @@ function Dashboard() {
                                     onClose={handleClose}
                                     aria-labelledby="modal-modal-title"
                                     aria-describedby="modal-modal-description"
+                                    disablePortal
+                                    disableEnforceFocus
                                 >
                                     <Box sx={style}>
                                         <TableContainer component={Paper}>
@@ -177,7 +187,14 @@ function Dashboard() {
                                                             </TableCell>
                                                             <TableCell align="right">{row.calories}</TableCell>
                                                             <TableCell align="right">{row.fat}</TableCell>
-                                                            <TableCell align="right">{row.carbs}</TableCell>
+                                                            <TableCell align="right">
+                                                                <span
+                                                                    style={{ cursor: 'pointer', color: 'blue', textDecoration: 'underline' }}
+                                                                    onClick={(e) => handleCarbsClick(row[3].carbs)}
+                                                                >
+                                                                    {row.carbs}
+                                                                </span>
+                                                            </TableCell>
                                                             <TableCell align="right">{row.protein}</TableCell>
                                                         </TableRow>
                                                     ))}
@@ -261,6 +278,8 @@ function Dashboard() {
                 </Box>
 
             </Container>
+
+
         </>
     )
 }
