@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Chart from "react-apexcharts";
+
 export function CaseTypes123(props) {
   //let cases=props.data ;
   //console.log("case data:",props.data);

@@ -56,7 +56,7 @@ import { Box, Card, Container, Grid, Typography } from '@material-ui/core';
 import React from 'react';
 
 function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+  return { name, calories, fat, carbs, protein};
 }
 
 const rows = [
