@@ -37,9 +37,9 @@ import { CasePriority } from "./component/Dashboard/apexchartsdonut";
 import { RiskLevel } from "./component/Dashboard/donutchartfrom";
 import { CaseTypes123 } from "./component/Dashboard/dounautchart2";
 import { GenericTable } from "./component/Dashboard/GenericTable";
-import TableData from "./component/Dashboard/table";
-import Totaltable from "./component/Dashboard/totaltable";
-
+// import TableData from "./component/Dashboard/table";
+// import Totaltable from "./component/Dashboard/totaltable";
+import Realtable from "./component/Dashboard/table/realtable";
 
 function App() {
   const [isUser, setIsUser] = useState(true);
@@ -95,8 +95,10 @@ function App() {
         <Route path='/casetypes' exact component={CasePriority} />
         <Route path='/risctypes' exact component={RiskLevel} />
         <Route path='/citytypes2' exact component={CaseTypes123} />
-        <Route path='/tableData' exact component={TableData} />
-        <Route path='/totalTable' exact component={Totaltable} />
+        <Route path='/casetabole' exact component={Realtable} />
+
+        {/* <Route path='/tableData' exact component={TableData} />
+        <Route path='/totalTable' exact component={Totaltable} /> */}
 
         {isUser && (
           <>

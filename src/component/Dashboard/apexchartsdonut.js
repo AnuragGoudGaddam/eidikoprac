@@ -6,7 +6,7 @@ const CasePriority = () => {
     {
       chart: {
         type: 'bar',
-        height: 350,
+        height: 400,
         stacked: true,
         toolbar: {
           show: true
@@ -42,8 +42,8 @@ const CasePriority = () => {
       },
       xaxis: {
         type: 'date',
-        categories: ['01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT'
-        ],
+        // categories: ['01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT'
+        // ],
       },
       legend: {
         position: 'right',

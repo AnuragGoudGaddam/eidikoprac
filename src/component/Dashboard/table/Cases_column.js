@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import PlayArrowRoundedIcom from '@mui/icons-material/PlayArrowRounded';
+// import { fetchUserToken } from "utils";
+const tableHeaders=null;
+const { caseRefernece, sasCaseId, cifId, alteredEntityNumber, primaryEntityName, ageing, alertCreationDate, createrUserId, assignedTo, caseCreatedDate, status } = tableHeaders
 
-
-export const Cases_column = () => {
+export const Cases_column = (jwtToken) => {
     return ([
         {
             Header: '<Field 1>',
             accessor: 'dataTaskDetails',
-            Cell: (e) => (<Link to={`/casedetails/${e.value.value}/${e.value.name}/${e.row?.original?.caseRefNo}`} target='_blank' rel='noopener'> <PlayArrowRoundedIcom fontSize={"medium"} /> </Link>),
+            Cell: (e) => (<Link to={`/casedetails/${jwtToken}/${e.value.value}/${e.value.name}/${e.row?.original?.caseRefNo}`} target='_blank' rel='noopener'> <PlayArrowRoundedIcom fontSize={"medium"} /> </Link>),
         },
         {
             Header: caseRefernece,

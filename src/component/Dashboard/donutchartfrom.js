@@ -186,7 +186,7 @@ function RiskLevel() {
         options={DonutChartOptions}
         series={caseDonutData}
         type="donut"
-        height={"227px"}
+        height={"239px"}
         width={"100%"}
       />
     </div>
