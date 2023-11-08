@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Box, Grid, Card } from '@material-ui/core';
+import { Container, Box, Grid, Card, Button } from '@material-ui/core';
 import {
     BarChart,
     Bar,
@@ -14,6 +14,8 @@ import {
     LineChart,
     Line
 } from 'recharts';
+
+
 
 import Dchart2 from './Dchart2';
 import LinechartD from './linechart';
@@ -36,11 +38,13 @@ import { CasePriority } from './apexchartsdonut';
 import { RiskLevel } from './donutchartfrom';
 import { GridContainer } from './mushqtable';
 import Realtable from './table/realtable';
-import {label} from './label'
+import { label } from './label'
 import { GenericTable } from './GenericTable';
-import {Cases_column} from './colunmcases' 
-import  "./table/tabledata"
- 
+// import { Cases_column } from './colunmcases'
+import "./table/tabledata"
+import CustomModal from './CustomModel';
+import { Children } from 'react';
+
 
 
 
@@ -70,7 +74,17 @@ const rows = [
     createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
-
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 'auto',
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
 
 // 
 
@@ -111,9 +125,12 @@ const data = [
     }
 ];
 
-function Dashboard({jwtToken}) {
+function Dashboard({ jwtToken }) {
+    const [opentable, setOpentable] = useState(false);
     const [carbsData, setCarbsData] = useState(null);
     const [open, setOpen] = React.useState(false);
+
+
     const handleOpen = () => setOpen(true);
     const handleClose = () => {
         console.log('Modal is closing'); // Add this line
@@ -127,19 +144,22 @@ function Dashboard({jwtToken}) {
         handleOpen();
     };
 
-    console.log(Realtable,"realtable");
+    console.log(Realtable, "realtable");
 
     const renderDashbordTable = (openCasesData) => {
         return (
-          <GridContainer title={label.cases} viewAll={`/cases/viewall/${jwtToken}`} >
-            {/* {_renderLoading()}
-            {
-              (data.casesData !== null && data.casesData.length > 0) */}
-            <GenericTable col={Cases_column(jwtToken)} apiData={openCasesData} isPagination={false} isExportExcel={false} isGlobalSearch={false} />
-            {/* : <MissingService message={!loading && 'No Cases are assigned to you.Please contact super user'} /> */}
-          </GridContainer>
+            // <GridContainer title={label.cases} viewAll={`/cases/viewall/${jwtToken}`} >
+            //     {/* {_renderLoading()}
+            // {
+            //   (data.casesData !== null && data.casesData.length > 0) */}
+            //     <GenericTable col={Cases_column(jwtToken)} apiData={openCasesData} isPagination={false} isExportExcel={false} isGlobalSearch={false} />
+            //     {/* : <MissingService message={!loading && 'No Cases are assigned to you.Please contact super user'} /> */}
+            // </GridContainer>
+            <></>
         )
-      }
+    }
+    
+
     return (
         <>
             <Container>
@@ -147,18 +167,30 @@ function Dashboard({jwtToken}) {
                     <Grid container spacing={2}  >
 
                         <Grid item xs={12} sm={6} md={4}  >
-                          <Card>
-                            <RiskLevel/>
-                          </Card>  
-                          
+                            <div >
+                                <Card onClick={()=>{setOpentable(!opentable)}} >
+                                    <RiskLevel />
+                                </Card>
+                            </div>
+
+
                         </Grid>
+                        
+                        {/*  */}
+
+
+                        {/*  */}
+
+
 
 
                         <Grid item xs={12} sm={6} md={4} >
-                           <Card>
-                            <CasePriority />
+                            <Card>
+                                <CasePriority />
                             </Card>
                         </Grid>
+                         
+                         <Button onClick={handleOpen} >onclick</Button>
                         {/* <div>
                             <div onClick={handleOpen}>
 
@@ -218,6 +250,23 @@ function Dashboard({jwtToken}) {
 
                     </Grid>
                     <Realtable />
+                    {/*  */}
+                    <div>
+                         
+                            {/* <Modal
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="modal-modal-title"
+                                aria-describedby="modal-modal-description"
+                            >
+                                  <Realtable />
+                            </Modal> */}
+
+                            <CustomModal openmodal={opentable} onClosemodal={()=>{setOpentable(!opentable) }} children={<Realtable/>} ></CustomModal>
+
+
+                        </div>
+
                 </Box>
 
             </Container>

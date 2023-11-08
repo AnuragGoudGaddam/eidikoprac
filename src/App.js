@@ -40,6 +40,7 @@ import { GenericTable } from "./component/Dashboard/GenericTable";
 // import TableData from "./component/Dashboard/table";
 // import Totaltable from "./component/Dashboard/totaltable";
 import Realtable from "./component/Dashboard/table/realtable";
+import dashboard2 from "./component/Dashboard/dashboard2";
 
 function App() {
   const [isUser, setIsUser] = useState(true);
@@ -91,11 +92,14 @@ function App() {
       <Switch>
         <Route path='/' exact component={Login} />
         <Route path='/dashboard' exact component={Dashboard} />
+        <Route path='/casetabole' exact component={Realtable} />
         <Route path='/Dash' exact component={Dash} />
+        <Route path='/Dash2' exact component={dashboard2} />
         <Route path='/casetypes' exact component={CasePriority} />
         <Route path='/risctypes' exact component={RiskLevel} />
         <Route path='/citytypes2' exact component={CaseTypes123} />
-        <Route path='/casetabole' exact component={Realtable} />
+       
+
 
         {/* <Route path='/tableData' exact component={TableData} />
         <Route path='/totalTable' exact component={Totaltable} /> */}

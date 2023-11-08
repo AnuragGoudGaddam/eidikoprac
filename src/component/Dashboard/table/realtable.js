@@ -144,11 +144,28 @@ import {
   Paper,
 } from '@mui/material';
 import { Margin } from '@mui/icons-material';
+import { useState } from 'react';
+import { Link,useHistory } from 'react-router-dom';
+
+function createData(caseRefNo, note, idno, bsno, name, Apin, date, createdBy, modifiedBy, modifiedDate, modifiedTime, modifiedNote) {
+  return {
+    caseRefNo,
+    note,
+    idno,
+    bsno,
+    name,
+    Apin,
+    date,
+    createdBy,
+    modifiedBy,
+    modifiedDate,
+    modifiedTime,
+    modifiedNote,
+  };
+}
 
 const data = [
-  // Your data goes here
-  // Example:
-  [
+  createData(
     'EEC-014337704-1000026011',
     'N/A',
     '014337704',
@@ -158,123 +175,178 @@ const data = [
     '19-May-2023',
     'SYSTEM',
     'NaveenCha',
-    '21-May-2023 ',
+    '21-May-2023',
     '03:14:51',
-    'N/A',
-  ],
-  [
+    'N/A'
+  ),
+  createData(
     'EEC-014337704-1000026023',
-    '	N/A',
-    '	014337704',
+    'N/A',
+    '014337704',
     'BS_014337704',
-    '	TOFIK NURA KEDIR',
+    'TOFIK NURA KEDIR',
     '49',
     '19-May-2023',
     'SYSTEM',
-    '	NaveenCha',
+    'NaveenCha',
     '21-May-2023',
-    ' 03:16:03',
-    '	N/A'
-  ],
-  [
+    '03:16:03',
+    'N/A'
+  ),
+  createData(
     'EEC-014337704-1000026023',
-    '	N/A',
-    '	014337704',
+    'N/A',
+    '014337704',
     'BS_0143239754',
     'RUKN ALHASIB AL THAHBI TR L L C SOL',
     '51',
     '20-May-2023',
     'SYSTEM',
-    '	NaveenCha',
+    'NaveenCha',
     '21-May-2023',
-    ' 03:16:03',
-    '	N/A'
-  ],
-  [
+    '03:16:03',
+    'N/A'
+  ),
+  createData(
     'EEC-014337704-1000026023',
-    '	N/A',
-    '	014309126',
+    'N/A',
+    '014309126',
     'BS_014309126',
     'RAHIMO HAIDERALI SACO',
     '117',
     '19-May-2023',
     'SYSTEM',
-    '	NaveenCha',
+    'NaveenCha',
     '21-May-2023',
-    ' 03:16:03',
-    '	N/A'
-  ],
-  [
+    '03:16:03',
+    'N/A'
+  ),
+  createData(
     'EEC-014337704-1000026023',
-    '	N/A',
-    '	014309126',
+    'N/A',
+    '014309126',
     'BS_014309126',
     'PHILEMON HOWARD',
     '49',
     '19-May-2023',
     'SYSTEM',
-    '	NaveenCha',
+    'NaveenCha',
     '21-May-2023',
-    ' 03:16:03',
-    '	N/A'
-  ],	
-  [
-  'EEC-014337704-1000026023',
-  '	N/A',
-  '	014309126',
-  'BS_010597457',
-  'PHILEMON HOWARD',
-  '49',
-  '19-May-2023',
-  'SYSTEM',
-  '	NaveenCha',
-  '21-May-2023',
-  ' 03:16:03',
-  '	N/A'
-],
-
+    '03:16:03',
+    'N/A'
+  ),
+  createData(
+    'EEC-014337704-1000026023',
+    'N/A',
+    '014309126',
+    'BS_010597457',
+    'PHILEMON HOWARD',
+    '49',
+    '19-May-2023',
+    'SYSTEM',
+    'NaveenCha',
+    '21-May-2023',
+    '03:16:03',
+    'N/A'
+  ),
 ];
+
 
 const tableColumns = [
-  { header: 'FIELD 1', accessor: 'field1' },
-  { header: 'FIELD 2', accessor: 'field2' },
-  { header: 'FIELD 3', accessor: 'field3' },
-  { header: 'FIELD 4', accessor: 'field4' },
-  { header: 'FIELD 5', accessor: 'field5' },
-  { header: 'FIELD 6', accessor: 'field6' },
-  { header: 'FIELD 7', accessor: 'field7' },
-  { header: 'FIELD 8', accessor: 'field8' },
-  { header: 'FIELD 9', accessor: 'field9' },
-  { header: 'FIELD 10', accessor: 'field10' },
-  { header: 'FIELD 11', accessor: 'field11' },
-  { header: 'FIELD 12', accessor: 'field12' },
+  { header: 'Case Ref No', accessor: 'caseRefNo' },
+  { header: 'Note', accessor: 'note' },
+  { header: 'ID Number', accessor: 'idno' },
+  { header: 'BS Number', accessor: 'bsno' },
+  { header: 'Name', accessor: 'name' },
+  { header: 'APIN', accessor: 'Apin' },
+  { header: 'Date', accessor: 'date' },
+  { header: 'Created By', accessor: 'createdBy' },
+  { header: 'Modified By', accessor: 'modifiedBy' },
+  { header: 'Modified Date', accessor: 'modifiedDate' },
+  { header: 'Modified Time', accessor: 'modifiedTime' },
+  { header: 'Modified Note', accessor: 'modifiedNote' },
 ];
 
+function Realtable(props) {
+
+  const [pinn,setPinn] = useState('')
 
 
-function Realtable() {
+  const history = useHistory();
+
+  // Inside Realtable component
+
+  
+
+//   const handleCarbsClick = (pin) => {
+//     const carbsdetails = data.find((each) => each.Apin === pin)
+//     console.log('Carbs clicked:', pin);
+//     setPinn(carbsdetails);  
+//     const pinnData = setPinn();
+//     history.push('/Dash', { data: pinnData });
+// };
+
+const handleCarbsClick = (pin) => {
+  const carbsdetails = data.find((each) => each.Apin === pin);
+  console.log('Carbs clicked:', pin);
+  // Use history.push to navigate to the 'Dash' component and pass the data as state
+  const newTab = window.open('/Dash', '_blank');
+
+    // Pass data as a prop to the new tab
+    newTab.carbsdetails = carbsdetails;
+
+  
+};
+ 
+
+
+
+
+// history.push({
+//   pathname: '/Dash',
+//   state: { data: setPinn },
+// });
+// const handleCellClick = (data) => {
+//   // Navigate to the Dash component with data as state
+//   history.push('/Dash', { data });
+// };
+
+
   return (
-    <TableContainer component={Paper} style={{marginTop:'20px'}}>
+    <TableContainer component={Paper} style={{ marginTop: '20px' }}>
       <Table>
-      <TableHead>
-          <TableRow className='' style={{margin:'1px'}}>
+        <TableHead>
+          <TableRow>
             {tableColumns.map((column) => (
-              <TableCell key={column.accessor}  style={{
-                    border: '1px solid rgb(213 218 222)',
-                    padding: '8px',
-                  }}>{column.header}</TableCell>
+              <TableCell
+                key={column.accessor}
+                style={{
+                  border: '1px solid rgb(213 218 222)',
+                  padding: '8px',
+                  fontWeight: 'bold',
+                }}
+              >
+                {column.header}
+              </TableCell>
             ))}
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map((row, index) => (
             <TableRow key={index}>
-              {row.map((cell, cellIndex) => (
-                <TableCell key={cellIndex} 
-                 style={{
+              {tableColumns.map((column) => (
+                <TableCell
+                  key={column.accessor}
+                  style={{
                     border: '1px solid rgb(213 218 222)',
                     padding: '8px',
-                  }} >{cell}</TableCell>
+                  }}
+
+                  onClick={() => handleCarbsClick(row['Apin'])}
+                >
+                  {row[column.accessor]}
+                  
+                </TableCell>
               ))}
             </TableRow>
           ))}
@@ -285,6 +357,5 @@ function Realtable() {
 }
 
 export default Realtable;
-
 
 
