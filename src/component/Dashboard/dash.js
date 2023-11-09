@@ -1,66 +1,17 @@
-// import { Box,Card, Container, Grid, Typography } from '@material-ui/core';
-// import React from 'react'
-
-// function createData(name, calories, fat, carbs, protein) {
-//   return { name, calories, fat, carbs, protein };
-// }
-
-// const rows = [
-//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-//   createData('Eclair', 262, 16.0, 24, 6.0),
-//   createData('Cupcake', 305, 3.7, 67, 4.3),
-//   createData('Gingerbread', 356, 16.0, 49, 3.9),
-// ];
-
-// function Dash() {
-//   return (
-//     <div>
-//      <Box>
-//      <Container>
-//       <Grid container spacing={2}>
-//         <Grid items xs={2} md={4} alignContent='center' className='dashcards' >
-//         {rows.map((row) =>(
-//           <Card >
-//              <div>
-//               <Typography variant='h6' >
-//                 Name:{row.name}
-//               </Typography>
-//               <Typography variant='p' >
-//                 calories:{row.calories}
-//               </Typography>
-//              </div>
-//              <div>
-//               <Typography variant='p'>
-//                Fat:{row.fat}
-//               </Typography>
-//              </div>
-//              <div>
-//               <Typography variant='p'>
-//                carbs:{row.carbs}
-//               </Typography>
-//              </div>
-//           </Card>
-//         ))}
-//         </Grid>
-//       </Grid>
-//       </Container>
-//      </Box>
-//     </div>
-//   )
-// }
-
-// export default Dash;
 
 import { Box, Card, Container, Grid, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import queryString from 'query-string';
 
 
 function Dash({ setPinn }) {
-  const location = useLocation();
-  const data = location.state.data;
-  console.log(data, "data");
+  // const location = useLocation();
+  // const data = location.state.data;
+  // console.log(data, "data");
+
+
+  const data = JSON.parse(localStorage.getItem('carbsdetails'));
 
   const listStyle = {
     listStyleType: 'none'

@@ -4,12 +4,11 @@ import PlayArrowRoundedIcom from '@mui/icons-material/PlayArrowRounded';
 const tableHeaders=null;
 const { caseRefernece, sasCaseId, cifId, alteredEntityNumber, primaryEntityName, ageing, alertCreationDate, createrUserId, assignedTo, caseCreatedDate, status } = tableHeaders
 
-export const Cases_column = (jwtToken) => {
+export const Cases_column = () => {
     return ([
         {
             Header: '<Field 1>',
             accessor: 'dataTaskDetails',
-            Cell: (e) => (<Link to={`/casedetails/${jwtToken}/${e.value.value}/${e.value.name}/${e.row?.original?.caseRefNo}`} target='_blank' rel='noopener'> <PlayArrowRoundedIcom fontSize={"medium"} /> </Link>),
         },
         {
             Header: caseRefernece,

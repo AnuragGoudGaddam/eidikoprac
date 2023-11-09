@@ -94,12 +94,12 @@ function LinechartD() {
                     <Grid container >
                         <Grid item >
                             <Card>
-                                <div onClick={handleOpen}>
-                                    <LineChart width={400} height={300} data={data} >
+                                <div>
+                                    <LineChart width={400} height={240} data={data} >
                                         <Line type='monotone' dataKey="uv" stroke="#2196f3" strokeWidth={2} />
                                         <Line type='monotone' dataKey="pv" stroke="#F44236" strokeWidth={2} />
                                         <Line type='monotone' dataKey="amt" stroke="#FFCA29" strokeWidth={2} />
-                                        <CartesianGrid stroke='#ccc' />
+                                        <CartesianGrid horizontal strokeDasharray="3 3" />
                                         <XAxis dataKey='name' />
                                         <YAxis />
                                         <Tooltip />

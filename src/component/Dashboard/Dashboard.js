@@ -185,12 +185,12 @@ function Dashboard({ jwtToken }) {
 
 
                         <Grid item xs={12} sm={6} md={4} >
-                            <Card>
+                            <Card onClick={()=>{setOpentable(!opentable)}} >
                                 <CasePriority />
                             </Card>
                         </Grid>
                          
-                         <Button onClick={handleOpen} >onclick</Button>
+                       
                         {/* <div>
                             <div onClick={handleOpen}>
 
@@ -241,15 +241,17 @@ function Dashboard({ jwtToken }) {
                         </div> */}
 
 
-                        {/* <Grid item xs={12} sm={6} md={4}  >
-
+                        <Grid xs={12} sm={6} md={4}  >
+                            
+                            <Card onClick={()=>{setOpentable(!opentable)}} >
                             <LinechartD />
+                            </Card>
 
 
-                        </Grid> */}
+                        </Grid>
 
                     </Grid>
-                    <Realtable />
+                  
                     {/*  */}
                     <div>
                          

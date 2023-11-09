@@ -286,18 +286,49 @@ function Realtable(props) {
 //     history.push('/Dash', { data: pinnData });
 // };
 
+// const handleCarbsClick = (pin) => {
+//   const carbsdetails = data.find((each) => each.Apin === pin);
+//   console.log('Carbs clicked:', pin);
+//   // Use history.push to navigate to the 'Dash' component and pass the data as state
+//   const newTab = window.open('/Dash', '_blank');
+
+//     // Pass data as a prop to the new tab
+//     newTab.carbsdetails = carbsdetails;
+
+  
+// };
+
+// const handleCarbsClick = (pin) => {
+//   const carbsdetails = data.find((each) => each.Apin === pin);
+//   console.log('Carbs clicked:', pin);
+//   // Use React Router Link to navigate to the 'Dash' component and pass data as state
+//   return (
+//     <Link to="/Dash" state={{ data: carbsdetails }}>View Details</Link>
+//   );
+// };
+ 
+// by using query params 
+
+// const handleCarbsClick = (data) => {
+//   const queryParams = new URLSearchParams();
+//   for (const key in data) {
+//     queryParams.append(key, data[key]);
+//   }
+//   const newTab = window.open(`'/Dash?'${queryParams.toString()}`, '_blank');
+// };
+
+// Local storage storing data 
+
 const handleCarbsClick = (pin) => {
   const carbsdetails = data.find((each) => each.Apin === pin);
   console.log('Carbs clicked:', pin);
-  // Use history.push to navigate to the 'Dash' component and pass the data as state
-  const newTab = window.open('/Dash', '_blank');
 
-    // Pass data as a prop to the new tab
-    newTab.carbsdetails = carbsdetails;
+
+  localStorage.setItem('carbsdetails', JSON.stringify(carbsdetails));
 
   
+  const newTab = window.open('/Dash', '_blank');
 };
- 
 
 
 

@@ -93,50 +93,7 @@ export function GenericTable({
   // Render the UI for your table
   return (
     <div>
-      <div className="d-flex justify-content-between">
-        {
-          title ?
-            (<div>
-              {/* <Typography variant="h6" component="h2" style={{ marginLeft: '1%' ,backgroundColor:'#EBEDF4'}}> */}
-              <h5> {title}</h5>
-              {/* </Typography> */}
-              {/* <Underline width="30px" className="my-2" /> */}
-            </div>
-            ) : ""
-        }
-        <div className="d-flex">
-          <div className="p-2">
-            {isGlobalSearch && <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />}
-          </div>
-          {
-            viewAll ? (
-              <div>
-                <div style={{ display: "flex" }}>
-                  <Link to={viewAll} target="_blank" rel='noopener'>
-                    <Button style={{ textTransform: "none", color: "#FF5E00" }}>
-                      View All <ArrowRightAltIcon />
-                    </Button>
-                  </Link>
-                  <div />
-                </div>
-              </div>
-            ) : (
-              <div>
-
-              </div>
-            )
-          }
-          {  /*   ------------------------ PHASE TWO-------------------------*/}
-          {isExportExcel && <div style={{ display: "flex" }}>
-            <Button disabled style={{ textTransform: "none", color: "#1D6F42" }}>
-              {/* <img src={xlicon} style={{ width: "25px" }} /> */}
-              <GetAppOutlined size={30} color="#1D6F42" />
-              Export to Excel
-            </Button>
-          </div>}
-
-        </div>
-      </div>
+    
 
       <Paper
         elevation={0}
