@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import PlayArrowRoundedIcom from '@mui/icons-material/PlayArrowRounded';
 // import { fetchUserToken } from "utils";
-const tableHeaders=null;
+import {tableHeaders} from '../label'
+// const tableHeaders=null;
 const { caseRefernece, sasCaseId, cifId, alteredEntityNumber, primaryEntityName, ageing, alertCreationDate, createrUserId, assignedTo, caseCreatedDate, status } = tableHeaders
 
 export const Cases_column = () => {

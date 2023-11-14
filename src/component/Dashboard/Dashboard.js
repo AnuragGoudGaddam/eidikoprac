@@ -44,7 +44,7 @@ import { GenericTable } from './GenericTable';
 import "./table/tabledata"
 import CustomModal from './CustomModel';
 import { Children } from 'react';
-
+import { Cases_column } from './table/Cases_column';
 
 
 
@@ -148,14 +148,15 @@ function Dashboard({ jwtToken }) {
 
     const renderDashbordTable = (openCasesData) => {
         return (
-            // <GridContainer title={label.cases} viewAll={`/cases/viewall/${jwtToken}`} >
-            //     {/* {_renderLoading()}
-            // {
-            //   (data.casesData !== null && data.casesData.length > 0) */}
-            //     <GenericTable col={Cases_column(jwtToken)} apiData={openCasesData} isPagination={false} isExportExcel={false} isGlobalSearch={false} />
-            //     {/* : <MissingService message={!loading && 'No Cases are assigned to you.Please contact super user'} /> */}
-            // </GridContainer>
-            <></>
+            <>
+            <GridContainer title={label.cases} viewAll={`/cases/viewall/${jwtToken}`} >
+                {/* {_renderLoading()}
+            {
+              (data.casesData !== null && data.casesData.length > 0) */}
+                <GenericTable col={Cases_column(jwtToken)} apiData={openCasesData} isPagination={false} isExportExcel={false} isGlobalSearch={false} />
+                {/* : <MissingService message={!loading && 'No Cases are assigned to you.Please contact super user'} /> */}
+            </GridContainer>
+            </>
         )
     }
     
@@ -164,6 +165,7 @@ function Dashboard({ jwtToken }) {
         <>
             <Container>
                 <Box >
+                <renderDashbordTable/>
                     <Grid container spacing={2}  >
 
                         <Grid item xs={12} sm={6} md={4}  >
@@ -251,6 +253,8 @@ function Dashboard({ jwtToken }) {
                         </Grid>
 
                     </Grid>
+
+                    
                   
                     {/*  */}
                     <div>

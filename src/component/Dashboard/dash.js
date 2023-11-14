@@ -20,16 +20,17 @@ function Dash({ setPinn }) {
   return (
     <div>
 
-      <ul  style={listStyle}>
-        <li>Case Ref No: {data.caseRefNo}</li>
-        <li>Note: {data.idno}</li>
-        <li>BS Number: {data.bsno}</li>
-        <li> Name: {data.name}</li>
-        <li> APIN: {data.Apin}</li>
-        <li>createdBy: {data.createdBy}</li>
-        <li>Date: {data.date}</li>
+      <ul style={listStyle}>
+        <li>Case Ref No: {data.caseRefernece}</li>
+        <li>cifId: {data.cifId}</li>
+        <li>alteredEntityNumber: {data.alteredEntityNumber}</li>
+        <li> primaryEntityName: {data.primaryEntityName}</li>
+        <li> ageing: {data.ageing}</li>
+        <li>alertCreationDate: {data.alertCreationDate}</li>
+        <li>createrUserId: {data.createrUserId}</li>
         <li>modifiedDate: {data.modifiedDate}</li>
-        <li>modifiedBy: {data.modifiedBy}</li>
+        <li>assignedTo: {data.assignedTo}</li>
+        <li>status: {data.status}</li>
 
       </ul>
     </div>

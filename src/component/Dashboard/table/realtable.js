@@ -142,25 +142,15 @@ import {
   TableCell,
   TableBody,
   Paper,
+  Card
 } from '@mui/material';
 import { Margin } from '@mui/icons-material';
 import { useState } from 'react';
-import { Link,useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-function createData(caseRefNo, note, idno, bsno, name, Apin, date, createdBy, modifiedBy, modifiedDate, modifiedTime, modifiedNote) {
+function createData(caseRefernece, sasCaseId, cifId, alteredEntityNumber, primaryEntityName, ageing, alertCreationDate, createrUserId, assignedTo, caseCreatedDate, status) {
   return {
-    caseRefNo,
-    note,
-    idno,
-    bsno,
-    name,
-    Apin,
-    date,
-    createdBy,
-    modifiedBy,
-    modifiedDate,
-    modifiedTime,
-    modifiedNote,
+    caseRefernece, sasCaseId, cifId, alteredEntityNumber, primaryEntityName, ageing, alertCreationDate, createrUserId, assignedTo, caseCreatedDate, status
   };
 }
 
@@ -253,137 +243,144 @@ const data = [
 
 
 const tableColumns = [
-  { header: 'Case Ref No', accessor: 'caseRefNo' },
-  { header: 'Note', accessor: 'note' },
-  { header: 'ID Number', accessor: 'idno' },
-  { header: 'BS Number', accessor: 'bsno' },
-  { header: 'Name', accessor: 'name' },
-  { header: 'APIN', accessor: 'Apin' },
-  { header: 'Date', accessor: 'date' },
-  { header: 'Created By', accessor: 'createdBy' },
-  { header: 'Modified By', accessor: 'modifiedBy' },
-  { header: 'Modified Date', accessor: 'modifiedDate' },
-  { header: 'Modified Time', accessor: 'modifiedTime' },
-  { header: 'Modified Note', accessor: 'modifiedNote' },
+  { Header: 'caseRefernece', accessor: 'caseRefernece' },
+  { Header: 'sasCaseId', accessor: 'sasCaseId' },
+  { Header: 'cifId', accessor: 'cifId' },
+  { Header: 'alteredEntityNumber', accessor: 'alteredEntityNumber' },
+  { Header: 'primaryEntityName', accessor: 'primaryEntityName' },
+  { Header: 'ageing', accessor: 'ageing' },
+  { Header: 'alertCreationDate', accessor: 'alertCreationDate' },
+  { Header: 'createrUserId', accessor: 'createrUserId' },
+  { Header: 'assignedTo', accessor: 'assignedTo' },
+  { Header: 'caseCreatedDate', accessor: 'caseCreatedDate' },
+  { Header: 'status', accessor: 'status' },
 ];
+
 
 function Realtable(props) {
 
-  const [pinn,setPinn] = useState('')
+  const [pinn, setPinn] = useState('')
 
 
   const history = useHistory();
 
   // Inside Realtable component
 
-  
-
-//   const handleCarbsClick = (pin) => {
-//     const carbsdetails = data.find((each) => each.Apin === pin)
-//     console.log('Carbs clicked:', pin);
-//     setPinn(carbsdetails);  
-//     const pinnData = setPinn();
-//     history.push('/Dash', { data: pinnData });
-// };
-
-// const handleCarbsClick = (pin) => {
-//   const carbsdetails = data.find((each) => each.Apin === pin);
-//   console.log('Carbs clicked:', pin);
-//   // Use history.push to navigate to the 'Dash' component and pass the data as state
-//   const newTab = window.open('/Dash', '_blank');
-
-//     // Pass data as a prop to the new tab
-//     newTab.carbsdetails = carbsdetails;
-
-  
-// };
-
-// const handleCarbsClick = (pin) => {
-//   const carbsdetails = data.find((each) => each.Apin === pin);
-//   console.log('Carbs clicked:', pin);
-//   // Use React Router Link to navigate to the 'Dash' component and pass data as state
-//   return (
-//     <Link to="/Dash" state={{ data: carbsdetails }}>View Details</Link>
-//   );
-// };
- 
-// by using query params 
-
-// const handleCarbsClick = (data) => {
-//   const queryParams = new URLSearchParams();
-//   for (const key in data) {
-//     queryParams.append(key, data[key]);
-//   }
-//   const newTab = window.open(`'/Dash?'${queryParams.toString()}`, '_blank');
-// };
-
-// Local storage storing data 
-
-const handleCarbsClick = (pin) => {
-  const carbsdetails = data.find((each) => each.Apin === pin);
-  console.log('Carbs clicked:', pin);
 
 
-  localStorage.setItem('carbsdetails', JSON.stringify(carbsdetails));
+  //   const handleCarbsClick = (pin) => {
+  //     const carbsdetails = data.find((each) => each.Apin === pin)
+  //     console.log('Carbs clicked:', pin);
+  //     setPinn(carbsdetails);  
+  //     const pinnData = setPinn();
+  //     history.push('/Dash', { data: pinnData });
+  // };
 
-  
-  const newTab = window.open('/Dash', '_blank');
-};
+  // const handleCarbsClick = (pin) => {
+  //   const carbsdetails = data.find((each) => each.Apin === pin);
+  //   console.log('Carbs clicked:', pin);
+  //   // Use history.push to navigate to the 'Dash' component and pass the data as state
+  //   const newTab = window.open('/Dash', '_blank');
+
+  //     // Pass data as a prop to the new tab
+  //     newTab.carbsdetails = carbsdetails;
+
+
+  // };
+
+  // const handleCarbsClick = (pin) => {
+  //   const carbsdetails = data.find((each) => each.Apin === pin);
+  //   console.log('Carbs clicked:', pin);
+  //   // Use React Router Link to navigate to the 'Dash' component and pass data as state
+  //   return (
+  //     <Link to="/Dash" state={{ data: carbsdetails }}>View Details</Link>
+  //   );
+  // };
+
+  // by using query params 
+
+  // const handleCarbsClick = (data) => {
+  //   const queryParams = new URLSearchParams();
+  //   for (const key in data) {
+  //     queryParams.append(key, data[key]);
+  //   }
+  //   const newTab = window.open(`'/Dash?'${queryParams.toString()}`, '_blank');
+  // };
+
+  // Local storage storing data 
+
+  const handleCarbsClick = (pin) => {
+    const carbsdetails = data.find((each) => each.Apin === pin);
+    console.log('Carbs clicked:', pin);
+
+
+    localStorage.setItem('carbsdetails', JSON.stringify(carbsdetails));
+
+
+    const newTab = window.open('/Dash', '_blank');
+  };
 
 
 
 
-// history.push({
-//   pathname: '/Dash',
-//   state: { data: setPinn },
-// });
-// const handleCellClick = (data) => {
-//   // Navigate to the Dash component with data as state
-//   history.push('/Dash', { data });
-// };
+  // history.push({
+  //   pathname: '/Dash',
+  //   state: { data: setPinn },
+  // });
+  // const handleCellClick = (data) => {
+  //   // Navigate to the Dash component with data as state
+  //   history.push('/Dash', { data });
+  // };
 
 
   return (
-    <TableContainer component={Paper} style={{ marginTop: '20px' }}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            {tableColumns.map((column) => (
-              <TableCell
-                key={column.accessor}
-                style={{
-                  border: '1px solid rgb(213 218 222)',
-                  padding: '8px',
-                  fontWeight: 'bold',
-                }}
-              >
-                {column.header}
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map((row, index) => (
-            <TableRow key={index}>
-              {tableColumns.map((column) => (
-                <TableCell
-                  key={column.accessor}
-                  style={{
-                    border: '1px solid rgb(213 218 222)',
-                    padding: '8px',
-                  }}
+    <div>
+      <Card style={{ padding:'10px' }} >
+        <div style={{ borderColor: "ebedf4" }}>
+          <TableContainer component={Paper} style={{ marginTop: '20px' }}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  {tableColumns.map((column) => (
+                    <TableCell
+                      key={column.accessor}
+                      style={{
+                        border: '1px solid rgb(213 218 222)',
+                        padding: '8px',
+                        fontWeight: 'bold',
+                        backgroundColor: 'rgb(245, 246, 249)'
+                      }}
+                    >
+                      {column.Header}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {data.map((row, index) => (
+                  <TableRow key={index}>
+                    {tableColumns.map((column) => (
+                      <TableCell
+                        key={column.accessor}
+                        style={{
+                          border: '1px solid rgb(213 218 222)',
+                        
+                        }}
 
-                  onClick={() => handleCarbsClick(row['Apin'])}
-                >
-                  {row[column.accessor]}
-                  
-                </TableCell>
-              ))}
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+                        onClick={() => handleCarbsClick(row['Apin'])}
+                      >
+                        {row[column.accessor]}
+
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      </Card>
+    </div>
   );
 }
 
