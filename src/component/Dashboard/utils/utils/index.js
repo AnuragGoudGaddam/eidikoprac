@@ -1,6 +1,5 @@
 import { ReactSession } from 'react-client-session';
-import jwtDecode from "jwt-decode";
-
+import { jwtDecode } from 'jwt-decode';
 /**
  * Returns a header object for a api request.
  * @param {string} taskId - The task id to be included in the header.

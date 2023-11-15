@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Box, Grid, Card, Button } from '@material-ui/core';
 import {
-    BarChart,
+    BarChart, 
     Bar,
     XAxis,
     YAxis,
@@ -245,9 +245,9 @@ function Dashboard({ jwtToken }) {
 
                         <Grid xs={12} sm={6} md={4}  >
                             
-                            <Card onClick={()=>{setOpentable(!opentable)}} >
+                            <span onClick={()=>{setOpentable(!opentable)}} style={{marginTop:'20px'}}>
                             <LinechartD />
-                            </Card>
+                            </span>
 
 
                         </Grid>

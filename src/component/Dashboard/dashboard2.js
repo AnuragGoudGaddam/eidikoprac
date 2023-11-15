@@ -24,13 +24,8 @@ function Dashboard2({jwtToken}) {
                             </Card>
                         </div>
 
-                        {/* <GenericTable col={Cases_column}  apiData={openCasesData} isExportExcel={false} isGlobalSearch={false} isPagination={false} /> */}
-                        <GridContainer title={label.cases} viewAll={`/cases/viewall/${jwtToken}`} >
-                            {/* {_renderLoading()}
-           {
-          (data.casesData !== null && data.casesData.length > 0) */}
-                            <GenericTable col={Cases_column(jwtToken)} apiData={openCasesData} isPagination={false} isExportExcel={false} isGlobalSearch={false} />
-                            {/* : <MissingService message={!loading && 'No Cases are assigned to you.Please contact super user'} /> */}
+                        <GridContainer title={label.cases}>
+                            <GenericTable col={Cases_column} apiData={openCasesData} isPagination={false} isExportExcel={false} isGlobalSearch={false} />
                         </GridContainer>
                     </Grid>
 

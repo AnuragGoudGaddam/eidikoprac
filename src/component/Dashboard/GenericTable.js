@@ -19,10 +19,10 @@ import {
   usePagination,
   useTable
 } from "react-table";
-import {alignLabel,truncateText} from "util"
+import { alignLabel,truncateText } from "./utils/utils/index"; 
 // import { alignLabel, truncateText } from "src\component\Dashboard\UtilsIndex.js";
 // import { Underline } from "../Underline";
-import { GlobalFilter } from "./Globalfilter"
+// import { GlobalFilter } from "./Globalfilter"
 
 /**
  * generic table with pagination.
