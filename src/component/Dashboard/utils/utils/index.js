@@ -1,12 +1,13 @@
 import { ReactSession } from 'react-client-session';
-import { jwtDecode } from 'jwt-decode';
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+const jwtDecode=null
 /**
  * Returns a header object for a api request.
  * @param {string} taskId - The task id to be included in the header.
  * The object contains the values of the session variables
  * @returns {Object} The header object.
  */
-const fetchRequestHeader = (taskId, token) => {
+const fetchRequestHeader = (taskId) => {
     const decodedToken = jwtDecode(token);
     return {
         // "jwtToken": ReactSession.get("jwttoken"),
@@ -19,7 +20,7 @@ const fetchRequestHeader = (taskId, token) => {
     }
 }
 
-const requestHeaderWithAppId = (appId, token) => {
+const requestHeaderWithAppId = (appId) => {
     const decodedToken = jwtDecode(token);
     return {
         "username": decodedToken?.sub || decodedToken?.username || "naveencha",
@@ -78,7 +79,7 @@ const truncateText = (text, maximumLength) => {
     return `${str?.trim()?.substring(0, maximumLength)} ...`
 }
 
-const fetchLoggedInUsername = (token) => {
+const fetchLoggedInUsername = () => {
     const decodedToken = jwtDecode(token);
     return decodedToken?.sub || decodedToken?.username || "naveencha"
 }

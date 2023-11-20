@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Box, Grid, Card, Button } from '@material-ui/core';
 import {
-    BarChart, 
+    BarChart,
     Bar,
     XAxis,
     YAxis,
@@ -39,12 +39,13 @@ import { RiskLevel } from './donutchartfrom';
 import { GridContainer } from './mushqtable';
 import Realtable from './table/realtable';
 import { label } from './label'
-import { GenericTable } from './GenericTable';
+// import { GenericTable } from './GenericTable';
 // import { Cases_column } from './colunmcases'
 import "./table/tabledata"
 import CustomModal from './CustomModel';
 import { Children } from 'react';
-import { Cases_column } from './table/Cases_column';
+import { GenericTable } from './GenericTable';
+// import { Cases_column } from './table/Cases_column';
 
 
 
@@ -127,6 +128,7 @@ const data = [
 
 function Dashboard({ jwtToken }) {
     const [opentable, setOpentable] = useState(false);
+    console.log(opentable, "opentBLE");
     const [carbsData, setCarbsData] = useState(null);
     const [open, setOpen] = React.useState(false);
 
@@ -146,38 +148,26 @@ function Dashboard({ jwtToken }) {
 
     console.log(Realtable, "realtable");
 
-    const renderDashbordTable = (openCasesData) => {
-        return (
-            <>
-            <GridContainer title={label.cases} viewAll={`/cases/viewall/${jwtToken}`} >
-                {/* {_renderLoading()}
-            {
-              (data.casesData !== null && data.casesData.length > 0) */}
-                <GenericTable col={Cases_column(jwtToken)} apiData={openCasesData} isPagination={false} isExportExcel={false} isGlobalSearch={false} />
-                {/* : <MissingService message={!loading && 'No Cases are assigned to you.Please contact super user'} /> */}
-            </GridContainer>
-            </>
-        )
-    }
-    
+
+
 
     return (
         <>
             <Container>
                 <Box >
-                <renderDashbordTable/>
+                    <renderDashbordTable />
                     <Grid container spacing={2}  >
 
                         <Grid item xs={12} sm={6} md={4}  >
                             <div >
-                                <Card onClick={()=>{setOpentable(!opentable)}} >
+                                <Card onClick={() => { setOpentable(!opentable) }} >
                                     <RiskLevel />
                                 </Card>
                             </div>
 
 
                         </Grid>
-                        
+
                         {/*  */}
 
 
@@ -187,66 +177,19 @@ function Dashboard({ jwtToken }) {
 
 
                         <Grid item xs={12} sm={6} md={4} >
-                            <Card onClick={()=>{setOpentable(!opentable)}} >
+                            <Card onClick={() => { setOpentable(!opentable) }} >
                                 <CasePriority />
                             </Card>
                         </Grid>
-                         
-                       
-                        {/* <div>
-                            <div onClick={handleOpen}>
-
-                                <MenuIcon />
-                            </div>
-
-                            <Modal
-                                open={open}
-                                onClose={handleClose}
-                                aria-labelledby="modal-modal-title"
-                                aria-describedby="modal-modal-description"
-                            >
-                                <Box sx={style}>
-                                    <TableContainer component={Paper}>
-                                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                                            <TableHead>
-                                                <TableRow>
-                                                    <TableCell>Dessert (100g serving)</TableCell>
-                                                    <TableCell align="right">Calories</TableCell>
-                                                    <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                                                    <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                                                    <TableCell align="right">Protein&nbsp;(g)</TableCell>
-                                                </TableRow>
-                                            </TableHead>
-                                            <TableBody>
-                                                {rows.map((row) => (
-                                                    <TableRow
-                                                        key={row.name}
-                                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                                    >
-                                                        <TableCell component="th" scope="row">
-                                                            {row.name}
-                                                        </TableCell>
-                                                        <TableCell align="right">{row.calories}</TableCell>
-                                                        <TableCell align="right">{row.fat}</TableCell>
-                                                        <TableCell align="right">{row.carbs}</TableCell>
-                                                        <TableCell align="right">{row.protein}</TableCell>
-                                                    </TableRow>
-                                                ))}
-                                            </TableBody>
-                                        </Table>
-                                    </TableContainer>
-
-                                </Box>
-                            </Modal>
 
 
-                        </div> */}
+
 
 
                         <Grid xs={12} sm={6} md={4}  >
-                            
-                            <span onClick={()=>{setOpentable(!opentable)}} style={{marginTop:'20px'}}>
-                            <LinechartD />
+
+                            <span onClick={() => { setOpentable(!opentable) }} style={{ marginTop: '20px' }}>
+                                <LinechartD />
                             </span>
 
 
@@ -254,12 +197,12 @@ function Dashboard({ jwtToken }) {
 
                     </Grid>
 
-                    
-                  
+
+
                     {/*  */}
                     <div>
-                         
-                            {/* <Modal
+
+                        {/* <Modal
                                 open={open}
                                 onClose={handleClose}
                                 aria-labelledby="modal-modal-title"
@@ -268,10 +211,21 @@ function Dashboard({ jwtToken }) {
                                   <Realtable />
                             </Modal> */}
 
-                            <CustomModal openmodal={opentable} onClosemodal={()=>{setOpentable(!opentable) }} children={<Realtable/>} ></CustomModal>
+                        <CustomModal openmodal={opentable} onClosemodal={()=>{setOpentable(!opentable) }} children={<Realtable/>} ></CustomModal>
 
 
-                        </div>
+                        {/* <CustomModal openmodal={opentable} onClosemodal={() => { setOpentable(!opentable) }}>
+                            <Realtable />
+                        </CustomModal> */}
+
+                        {/* {renderDashbordTable()}\
+
+                            
+
+                            <GenericTable/> */}
+                        {/* <Cases_column/> */}
+
+                    </div>
 
                 </Box>
 

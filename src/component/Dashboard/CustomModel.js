@@ -1,5 +1,6 @@
 import { Modal } from '@mui/material'
 import React from 'react'
+import Realtable from './table/realtable'
 
 
 const CustomModal = ({openmodal,onClosemodal,children,}) => {

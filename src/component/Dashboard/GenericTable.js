@@ -3,6 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import MuiTableCell from "@material-ui/core/TableCell";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import GetAppOutlined from '@mui/icons-material/GetApp';
+import CasesAllApiPaginaTableViewall from './CasesallpagesApi'
 import {
   Box,
   Button, Paper,
@@ -13,13 +14,13 @@ import {
   Tooltip,
 } from "@mui/material";
 import React, { useEffect, useMemo } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import {
   useGlobalFilter,
   usePagination,
   useTable
 } from "react-table";
-import { alignLabel,truncateText } from "./utils/utils/index"; 
+import { alignLabel, truncateText } from "./utils/utils/index";
 // import { alignLabel, truncateText } from "src\component\Dashboard\UtilsIndex.js";
 // import { Underline } from "../Underline";
 // import { GlobalFilter } from "./Globalfilter"
@@ -27,9 +28,9 @@ import { alignLabel,truncateText } from "./utils/utils/index";
 /**
  * generic table with pagination.
  */
-export function GenericTable({
-  col:columns, apiData: data = [], title, viewAll, onChange = "",
-  // isPagination = false,
+export function GenericTable({                       
+  col: columns, apiData: data = [], title, viewAll, onChange = "",
+  // isPagination = false,                                                            
   isGlobalSearch = true, isExportExcel = false, stickyHeader, onClick,
   action, renderStatus, isPageSize, pointerColumn
 }) {
@@ -70,14 +71,14 @@ export function GenericTable({
     if (cell.column.Header === "") {
       return action(cell, row);
     }
-    if ((cell.column.Header === "STATUSES" || cell.column.Header === "EXPIRED" ) && renderStatus) {
+    if ((cell.column.Header === "STATUSES" || cell.column.Header === "EXPIRED") && renderStatus) {
       return renderStatus(cell.value)
     }
     if (cell.value) {
       if (typeof cell.value === "string") {
         if (cell.value.length > 150) {
           return (
-            <Tooltip title={cell.value} className="pointer message-details" PopperProps={{disablePortal:true}}>
+            <Tooltip title={cell.value} className="pointer message-details" PopperProps={{ disablePortal: true }}>
               <Box component="span">
                 {truncateText(cell.value, 150)}
               </Box>
@@ -93,8 +94,6 @@ export function GenericTable({
   // Render the UI for your table
   return (
     <div>
-    
-
       <Paper
         elevation={0}
         sx={{
@@ -147,6 +146,7 @@ export function GenericTable({
                           onClick={() => cell.column.Header === pointerColumn && cell.value ? onClick(cell) : ""}
                         >
                           {renderTableBodyCell(cell, row)}
+                          {console.log('tabledata',renderTableBodyCell)}
                         </TableCell>
                       );
                     })}
@@ -154,7 +154,6 @@ export function GenericTable({
                 );
               })}
             </TableBody>
-
           </Table>
         </TableContainer>
       </Paper>

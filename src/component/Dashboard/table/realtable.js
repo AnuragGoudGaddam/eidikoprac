@@ -320,7 +320,7 @@ function Realtable(props) {
     const newTab = window.open('/Dash', '_blank');
   };
 
-
+console.log(data);
 
 
   // history.push({

@@ -1,9 +1,21 @@
 import { Link } from "react-router-dom";
 import PlayArrowRoundedIcom from '@mui/icons-material/PlayArrowRounded';
-// import { fetchUserToken } from "utils";
-import {tableHeaders} from '../label'
+ import {tableHeaders} from '../label'
 // const tableHeaders=null;
-const { caseRefernece, sasCaseId, cifId, alteredEntityNumber, primaryEntityName, ageing, alertCreationDate, createrUserId, assignedTo, caseCreatedDate, status } = tableHeaders
+const { dataId, 
+    alertId,
+    instanceId,
+     caseRefernece,
+      sasCaseId,
+       cifId, 
+       alteredEntityNumber, 
+       primaryEntityName, 
+       ageing,
+        alertCreationDate, 
+        createrUserId, 
+        assignedTo,
+         caseCreatedDate,
+          status } = tableHeaders
 
 export const Cases_column = () => {
     return ([
@@ -21,6 +33,9 @@ export const Cases_column = () => {
         { Header: alteredEntityNumber, accessor: 'alertedEntityNumber' },
         // { Header: 'Alerted Entity Name', accessor: 'customerName' },
         // { Header: 'Primary Entity number', accessor: 'primaryEntityNumber' },
+        { Header: instanceId, accessor: 'instanceId' },
+        { Header: dataId, accessor: 'dataId' },
+        { Header: alertId, accessor: 'alertId' },
         { Header: primaryEntityName, accessor: 'primaryEntityName' },
         { Header: ageing, accessor: 'ageing' },
         { Header: alertCreationDate, accessor: 'alertCreationDate' },
