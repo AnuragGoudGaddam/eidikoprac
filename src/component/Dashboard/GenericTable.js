@@ -48,6 +48,11 @@ export function GenericTable({
     data,
   }, useGlobalFilter, usePagination);
 
+//  console.log("entering table",columns,data, title, viewAll, onChange = "",
+//  // isPagination = false,                                                            
+//  isGlobalSearch = true, isExportExcel = false, stickyHeader, onClick,
+//  action, renderStatus, isPageSize, pointerColumn );
+
   useEffect(() => {
     if (isPageSize) {
       setPageSize(10);

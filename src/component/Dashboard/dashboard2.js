@@ -5,6 +5,8 @@ import { GenericTable } from './GenericTable'
 import { Cases_column } from './table/Cases_column'
 import { GridContainer } from './mushqtable'
 import Realtable from './table/realtable'
+import {label} from  './utils/utils/label'
+import processTable from './table/processTable'
 
 // import Realtable1 from './reactorginaltable'
 // import Data from './reactorginaltable'
@@ -43,14 +45,23 @@ function Dashboard2({jwtToken}) {
                                 <RiskLevel />
                             </Card>
                         </div>
-{/* 
-                        <GridContainer title={label.cases}>
+                         
+                         
+
+                        {/* <GridContainer title={label.cases}>
                             <GenericTable col={Cases_column} apiData={openCasesData} isPagination={false} isExportExcel={false} isGlobalSearch={false} />
                         </GridContainer> */}
-                        <GenericTable col={Cases_column()} apiData={[data.openCasesData]} isPagination={false} isExportExcel={false} isGlobalSearch={false} />
+                        {/* <GenericTable col={Cases_column()} apiData={data.openCasesData} 
+                        
+                        isPagination={false} isExportExcel={false} isGlobalSearch={false} /> */}
+                        <processTable/>
+
                         {
+                        
                             <div>
+                            {console.log(GenericTable,'cases12')}
                                 {
+
                                     data.openCasesData.map((d, i)=>(
                                         <li>{JSON.stringify(d)}</li>
                                     ))
