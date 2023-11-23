@@ -11,7 +11,9 @@ function Dash({ setPinn }) {
   // console.log(data, "data");
 
 
-  const data = JSON.parse(localStorage.getItem('carbsdetails'));
+  const data = JSON.parse(localStorage.getItem('Anurag'));
+
+  console.log(data);
 
   const listStyle = {
     listStyleType: 'none'
@@ -21,16 +23,15 @@ function Dash({ setPinn }) {
     <div>
 
       <ul style={listStyle}>
-        <li>Case Ref No: {data.caseRefernece}</li>
+        <li>Case Ref No: {data.caseRefNo}</li>
         <li>cifId: {data.cifId}</li>
-        <li>alteredEntityNumber: {data.alteredEntityNumber}</li>
+        <li>alteredEntityNumber: {data.alertedEntityNumber}</li>
         <li> primaryEntityName: {data.primaryEntityName}</li>
         <li> ageing: {data.ageing}</li>
         <li>alertCreationDate: {data.alertCreationDate}</li>
-        <li>createrUserId: {data.createrUserId}</li>
-        <li>modifiedDate: {data.modifiedDate}</li>
-        <li>assignedTo: {data.assignedTo}</li>
-        <li>status: {data.status}</li>
+        <li>createrUserId: {data.createdUserId}</li>
+        <li>assignedTo: {data.taskAssignedToUser}</li>
+        <li>status: {data.createdDateTime}</li>
 
       </ul>
     </div>

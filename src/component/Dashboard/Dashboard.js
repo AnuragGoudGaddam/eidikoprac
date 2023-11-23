@@ -45,6 +45,7 @@ import "./table/tabledata"
 import CustomModal from './CustomModel';
 import { Children } from 'react';
 import { GenericTable } from './GenericTable';
+import ProcessTable from './table/processTable';
 // import { Cases_column } from './table/Cases_column';
 
 
@@ -211,7 +212,7 @@ function Dashboard({ jwtToken }) {
                                   <Realtable />
                             </Modal> */}
 
-                        <CustomModal openmodal={opentable} onClosemodal={()=>{setOpentable(!opentable) }} children={<Realtable/>} ></CustomModal>
+                        <CustomModal openmodal={opentable} onClosemodal={()=>{setOpentable(!opentable) }} children={<ProcessTable/>} ></CustomModal>
 
 
                         {/* <CustomModal openmodal={opentable} onClosemodal={() => { setOpentable(!opentable) }}>
