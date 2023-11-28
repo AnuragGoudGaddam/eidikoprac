@@ -46,6 +46,7 @@ import CustomModal from './CustomModel';
 import { Children } from 'react';
 import { GenericTable } from './GenericTable';
 import ProcessTable from './table/processTable';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 // import { Cases_column } from './table/Cases_column';
 
 
@@ -127,7 +128,14 @@ const data = [
     }
 ];
 
+
+
 function Dashboard({ jwtToken }) {
+
+    const history = useHistory();
+    const productHandler = () => {
+        history.push('/productQ');
+    };
     const [opentable, setOpentable] = useState(false);
     console.log(opentable, "opentBLE");
     const [carbsData, setCarbsData] = useState(null);
@@ -148,7 +156,6 @@ function Dashboard({ jwtToken }) {
     };
 
     console.log(Realtable, "realtable");
-
 
 
 
@@ -195,9 +202,11 @@ function Dashboard({ jwtToken }) {
 
 
                         </Grid>
+                        
 
                     </Grid>
 
+<Button variant='contained' onClick={productHandler}>Product</Button>
 
 
                     {/*  */}
