@@ -43,7 +43,7 @@ import Realtable from "./component/Dashboard/table/realtable";
 import dashboard2 from "./component/Dashboard/dashboard2";
 import processTable from "./component/Dashboard/table/processTable";
 import ProductDataQ from "./component/Dashboard/ProductDataQ";
-
+import ExpandTable from "./component/expandableTable/expandableTable";
 function App() {
   const [isUser, setIsUser] = useState(true);
   console.log(`OA React Application started`);
@@ -102,6 +102,8 @@ function App() {
         <Route path='/citytypes2' exact component={CaseTypes123} />
         <Route path='/processTable' exact component={processTable} />
         <Route path='/productQ' exact component={ProductDataQ}/>
+        <Route path='/expandTable' exact component={ExpandTable}/>
+
 
 
 

@@ -86,3 +86,43 @@
 .apexcharts-datalabel-label{
   fill:black  !important
 }
+/* App.css */
+.expandable-table {
+  border-collapse: collapse;
+  width: 20px;
+  border: none;
+}
+
+.expandable-table th, .expandable-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+/* App.css */
+.small-cell {
+  padding: 5px;
+  font-size: 12px;
+}
+.expand-cell {
+  cursor: pointer;
+}
+.inputs{
+  width: 55px;
+  border: none;
+}
+.button_{
+border: none;
+
+}
+.Direction_{
+  display: flex;
+  flex-direction: row;
+}
+.App_jss{
+  display: flex;
+  flex-direction: row;
+ 
+}
+.expandButton{
+margin: 10px;
+}

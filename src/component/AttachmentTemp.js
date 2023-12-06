@@ -16,6 +16,7 @@ import DocumentUpload from "./DocumentUpload";
 import { properties } from "./properties";
 import "./Attachment.css";
 import Checkbox from "@material-ui/core/Checkbox";
+import ExpandTable from "./expandableTable/expandableTable";
 
 function AttachmentTemp() {
   return (
@@ -121,6 +122,22 @@ function AttachmentTemp() {
             </Col>
           </FormGroup>
 
+          <FormGroup className="Direction_">
+              {/* bifercation  */}
+              <Label sm={3} style={{ marginRight: -80 }} className='required'>
+              {" "}
+              Bifercation
+            </Label>
+            <Col sm={2}>
+              <div size='sm' type='select' id='buildingId' required>
+                <ExpandTable/>
+              </div>
+            </Col>
+
+
+            {/* edit */}
+          </FormGroup>
+
           <FormGroup row>
             <Label sm={3} style={{ marginRight: -80 }} className='required'>
               {" "}
@@ -133,7 +150,6 @@ function AttachmentTemp() {
                 </option>
               </Input>
             </Col>
-
             <Col sm={2}>
               <Button
                 style={{

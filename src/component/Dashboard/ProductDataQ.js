@@ -1,12 +1,15 @@
 import { Box,FormControl,Grid,InputLabel,MenuItem,Select,Table,
     TableBody, TableCell,TableContainer,TableRow,Paper, } from '@mui/material';
   import React from 'react';
+  import axios from 'axios';
+  import {useState,useEffect} from 'react'
   
   const ProductDataQ = () => {
     const [product, setProduct] = React.useState('');
     const [productDetails, setProductDetails] = React.useState(null);
     const [specifications, setSpecifications] = React.useState(null);
     const [productQuestions, setProductQuestions] = React.useState(null);
+   
 
     const handleChange = (event) => {
         const details = getProductDetailsById(event.target.value);
