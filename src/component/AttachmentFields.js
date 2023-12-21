@@ -22,6 +22,7 @@ import { properties } from "./properties";
 import "./Attachment.css";
 import Checkbox from "@material-ui/core/Checkbox";
 import ReactSession from "react-client-session/dist/ReactSession";
+import ExpandTable from "./expandableTable/expandableTable";
 
 {
   /* <switch>
@@ -685,7 +686,7 @@ export default function AttachmentFields() {
               id='invoiceAmount'
               defaultValue={data.invoiceAmount}
               size='sm'
-              disabled='disabled'
+              // disabled='disabled'
             />
           </Col>
         </FormGroup>
@@ -834,8 +835,8 @@ export default function AttachmentFields() {
           <Label sm={3} style={{ marginLeft: "" }}>
             Bifurcation
           </Label>
-          <Col sm={2}>
-            <Input
+          <Col sm={2}   style={{ marginLeft: "-5rem" }} >
+            {/* <Input
               type='text'
               autoComplete='off'
               onChange={(e) => handle(e)}
@@ -844,10 +845,12 @@ export default function AttachmentFields() {
               value={data.bifurcation}
               size='sm'
               style={{ marginLeft: "-5rem" }}
-            />
+            /> */}
+            <ExpandTable />
+            
           </Col>
 
-          <Label sm={3} style={{ marginLeft: "5rem" }}>
+          <Label sm={3} style={{ marginLeft: "11rem" }}>
             Reason
           </Label>
           <Col sm={2}>

@@ -7,9 +7,9 @@ const DOMAIN = window.location.host;
 console.log(`Dynamic server url:  ${PROTOCOL}//${DOMAIN}/${CONTEXTROOT}`);
 // const OA_SERVICE_URL = `http://localhost:3001`;
 const OA_SERVICE_URL = `${PROTOCOL}//${DOMAIN}/${CONTEXTROOT}`;
- const OA_RESERVEFUND_URL = `http://localhost:5050`;
+ const OA_RESERVEFUND_URL = `http://10.0.0.70:5050`;
 // const OA_RESERVEFUND_URL = `${PROTOCOL}//${DOMAIN}/${CONTEXTROOT}`;
-console.log(OA_SERVICE_URL);
+console.log(OA_SERVICE_URL,"Oa_Url");
 export const properties = {
   loginURL: `${OA_SERVICE_URL}/login`,
   userAuth: `${OA_SERVICE_URL}/auth`,
@@ -57,4 +57,6 @@ export const properties = {
   fetchReserveFundData:`${OA_SERVICE_URL}/data`,
   saveReserveFundData:`${OA_SERVICE_URL}/dataSave`,
   reserveFundUpdateDetail:`${OA_SERVICE_URL}/dataUpdate`,
+  // anurag
+  completedDataUrl:`${OA_RESERVEFUND_URL}/completedrequest/completedRequests`
 };

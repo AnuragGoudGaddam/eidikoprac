@@ -10,6 +10,8 @@ import ReportsTab from "./ReportsTab";
 import BudgetDetailsTable from "./BudgetDetailsTable";
 import ReserveFundDetails from "./ReserveFundDetails";
 import ReserveFundDetailsCopy from "./ReserveFundDetailsCopy";
+import ProcessTable from "./Dashboard/table/processTable";
+import Audit_Table1 from "./Dashboard/table/tableData11";
 
 
 
@@ -130,6 +132,19 @@ const AppTabs = () => {
             marginTop: "-3px",
           }}
           />
+          <Tab
+          label='Audit Taril'
+          style={{
+            fontWeight: "bold",
+            minWidth: "2%",
+            fontSize: "13px",
+            paddingTop: "0px",
+            paddingBottom: "2px",
+            paddingLeft: "10px",
+            paddingRight: "0px",
+            marginTop: "-3px",
+          }}
+          />
         </Tabs>
       </AppBar>
 
@@ -140,6 +155,7 @@ const AppTabs = () => {
       {tbVal === 4 && <BudgetDetailsTable />}
       {tbVal === 5 && <ReportsTab />}
       {tbVal === 6 && <ReserveFundDetailsCopy/>}
+      {tbVal === 7 && <Audit_Table1/>} 
      
     </div>
   );

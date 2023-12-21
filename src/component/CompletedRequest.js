@@ -14,14 +14,17 @@ function CompletedRequest() {
   const [building, setBuilding] = useState([]);
   const [company, setCompany] = useState([]);
   const [years, setYears] = useState([]);
+  const [status, setStatus] = useState("");
+  const [isEditClicked, setIsEditClicked] = useState(false);
+
 
 
   const completedData = {
     mgmtCompId: data.mgmtCompId,
-    supplierId: data.supplierId,
+    // supplierId: data.supplierId,
     buildingId: data.buildingId,
-    status: data.status,
-    budgetYear:data.budgetYear
+    // status: data.status,
+    // budgetYear: data.budgetYear
   };
   //'http://localhost:3001/completedrequest/completedRequests'
   const loadCompletedData = (completedData) => {
@@ -30,7 +33,7 @@ function CompletedRequest() {
       username: ReactSession.get("username"),
     };
     axios
-      .post(properties.completedRequestList, completedData, { headers: head })
+      .post(properties.completedDataUrl,completedData)
       .then((response) => response.data)
       .then(
         (data) => {
@@ -106,7 +109,7 @@ function CompletedRequest() {
         const fileName = "CompletedPayments.xlsx";
         const linkSource = `data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,${data}`;
         downloadLink.href = linkSource;
-        downloadLink.download = fileName;
+       downloadLink.download = fileName;
         downloadLink.click();
       });
   };
@@ -117,7 +120,7 @@ function CompletedRequest() {
 
   const fetchManagementComany = async () => {
     const company = await axios.get(properties.managementCompanyList);
-    console.log("company" + company.data);
+    console.log("company", company.data);
     setData1(company.data);
   };
   useEffect(() => {
@@ -126,7 +129,7 @@ function CompletedRequest() {
 
   const fetchSupplier = async () => {
     const supplier = await axios.get(properties.supplierList);
-    console.log("supplier" + supplier.data);
+    console.log("supplier", supplier.data);
     setData2(supplier.data);
   };
   useEffect(() => {
@@ -147,9 +150,9 @@ function CompletedRequest() {
     }
     setYears(year.reverse());
   };
-  useEffect(() =>{
+  useEffect(() => {
     getYears();
-},[]);
+  }, []);
 
   // useEffect(() => {
   //   fetchBuilding();
@@ -161,8 +164,27 @@ function CompletedRequest() {
     setData(newdata);
     console.log(newdata);
   }
+  const handleStatusChange = (e) => {
+    setStatus(e.target.value);
+  };
+  const handlePaymentReversal = () => {
+    console.log("Payment reversal initiated.");
+  };
+  const handleEditClick = () => {
+    if (isEditClicked) {
+     
+      setIsEditClicked(false);
+    } else {
+      
+      setIsEditClicked(true);
+    }
+  };
+  const handleReserveClick = () => {
+    
+    console.log("Reserve button clicked.");
+  };
 
-  //get building name based on management comp
+ 
   let getBuildingNames = async (e) => {
     e.preventDefault();
     var name = e.target.name;
@@ -187,7 +209,7 @@ function CompletedRequest() {
             <Label sm={2} className='required'>
               Management Company
             </Label>
-            <Col sm={2} style={{marginLeft:"-1%"}}>
+            <Col sm={2} style={{ marginLeft: "-1%" }}>
               <Input
                 size='sm'
                 type='select'
@@ -198,21 +220,25 @@ function CompletedRequest() {
                 <option selected disabled>
                   Please select a company
                 </option>
-                {data1.map((opt) => (
+
+                <option value='332'>Eidiko</option>
+                <option value='335'>Eid</option>
+
+
+                {/* {data1.map((opt) => (
                   <option value={opt.mgmtCompId}>{opt.mcNameEn}</option>
-                ))}
+                ))} */}
               </Input>
             </Col>
 
             <Label sm={2}>Supplier Name</Label>
-            <Col sm={2} style={{marginLeft:"-2%"}}>
+            <Col sm={2} style={{ marginLeft: "-2%" }}>
               <Input
                 style={{ marginLeft: -20 }}
                 size='sm'
                 type='select'
                 id='supplierId'
                 value={data.supplierId}
-                size='sm'
                 onChange={(e) => handle(e)}>
                 <option selected disabled>
                   Please select a supplier
@@ -242,30 +268,42 @@ function CompletedRequest() {
             <Label sm={2} className='required'>
               Building Name
             </Label>
-            <Col sm={2} style={{marginLeft:"-1%"}}>
+            <Col sm={2} style={{ marginLeft: "-1%" }}>
               <Input
                 size='sm'
                 type='select'
                 id='buildingId'
+                value={data.buildingId}
                 onChange={(e) => handle(e)}>
                 <option selected disabled>
                   Please select a building
                 </option>
-                {building.map((opt) => (
+
+                <option value='731'>building Name</option>
+                <option value='816'>Mjr Name</option>
+
+              {/* <option value='730'>BARTON HOUSE2</option>
+              <option value='731'>BENNETT HOUSE1</option>  */}
+
+                {/* {building.map((opt) => (
                   <option value={opt.buildingId}>{opt.buildingName}</option>
-                ))}
+                ))} */}
               </Input>
             </Col>
 
             <Label sm={2}>Status</Label>
-            <Col sm={2} style={{marginLeft:"-2%"}}>
+            <Col sm={2} style={{ marginLeft: "-2%" }}>
               <Input
                 style={{ marginLeft: -20 }}
                 size='sm'
                 type='select'
                 value={data.status}
                 id='status'
-                onChange={(e) => handle(e)}>
+                onChange={(e) => {
+                  handle(e);
+                  handleStatusChange(e);
+                }}
+              >
                 <option selected disabled>
                   {" "}
                   Please select status
@@ -294,24 +332,61 @@ function CompletedRequest() {
             </div>
           </FormGroup>
           <FormGroup row>
-          <Label sm={2}>Budget Year</Label>
-        <Col sm={2} style={{marginLeft:"-1%"}}>
-          <Input
-            type='select'
-            size='sm'
-            id='budgetYear'
-            name='budgetYear'
-            value={data.budgetYear}
-            onChange={(e)=>handle(e)}>
-            <option selected disabled>
-              Select Budget year
-            </option>
-            {years.map((year) => (
-              <option value={year}>{year}</option>
-            ))}
-          </Input>
-        </Col>
+            <Label sm={2}>Budget Year</Label>
+            <Col sm={2} style={{ marginLeft: "-1%" }}>
+              <Input
+                type='select'
+                size='sm'
+                id='budgetYear'
+                name='budgetYear'
+                value={data.budgetYear}
+                onChange={(e) => handle(e)}>
+                <option selected disabled>
+                  Select Budget year
+                </option>
+                {years.map((year) => (
+                  <option value={year}>{year}</option>
+                ))}
+              </Input>
+            </Col>
+
+
+            <div class='buttonEdit  col'  >
+              <button
+                style={{ backgroundColor: "#254a9e", borderColor: "#254a9e", marginLeft: 180 }}
+                type='button'
+                class='btn btn-primary btn-sm'
+                onClick={handlePaymentReversal}
+                disabled={status !== "APPROVED" || isEditClicked}
+              >
+
+
+                {/* <i class='fa fa-download' aria-hidden='true'></i> PDF */}
+                Payment reversal
+              </button>{" "}
+              <button
+                style={{ backgroundColor: "#254a9e", borderColor: "#254a9e" }}
+                type='button'
+                class='btn btn-primary btn-sm'
+                onClick={handleEditClick}
+                disabled={isEditClicked}
+              >
+                Edit
+              </button>{" "}
+              <button
+                style={{ backgroundColor: "#254a9e", borderColor: "#254a9e" }}
+                type='button'
+                class='btn btn-primary btn-sm'
+                onClick={handleReserveClick}
+                disabled={!isEditClicked}
+              >
+                Reserve
+              </button>{" "}
+
+            </div>
+
           </FormGroup>
+
 
         </Form>
         <CompletedRequestTable dataArray={compData} />
